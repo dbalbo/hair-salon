@@ -1,0 +1,18 @@
+<h1>The Current Stylists for this Salon:</h1>
+
+<%if @stylists.any?() %>
+	<h3>Click on a stylist to view all of them and their clients</h3>
+
+	<ul>
+		<% @stylists.each() do |stylist| %>
+			<li><a href="/stylists/<%= stylist.id()%>"><%= styist.name() %></a></li>
+		<% end %>
+	</ul>		
+
+
+
+<% else %>
+
+    <p>There are no stylists yet!</p>
+
+<% end %>
