@@ -1,17 +1,5 @@
-require('rspec')
-require('pg')
-require('client')
-require('stylist')
-require('rubygems')
-require('pry')
+require('spec_helper')
 
-DB = PG.connect({:dbname => "hair_salon_test"})
-
-RSpec.configure do |config|
-	config.after(:each) do
-		DB.exec("DELETE FROM stylists *;")
-	end
-end
 
 
 describe(Stylist)  do
@@ -36,16 +24,6 @@ describe(Stylist)  do
 		end
 	end
 
-	# describe('.find') do
-	# 	it('returns a stylist by its id')do
-	# 	test_stylist = Stylist.new({:name => 'Brenda', :id => nil})
-	# 	test_stylist.save()
-	# 	test_stylist2 = Stylist.new({:name => 'Jane', :Id => nil })
-	# 	test_stylist2.save()
-	# 	expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
-	# 	end
-	# end
-
 	describe('#save') do
 		it('allows you to save stylists to the database') do
 			stylist = Stylist.new({:name => 'Brenda', :id => nil})
@@ -61,8 +39,7 @@ describe(Stylist)  do
 			expect(stylist1).to(eq(stylist2))
 		end
 	end
-
-#end
+end
 
 
 
@@ -100,4 +77,3 @@ describe(Stylist)  do
 
 
 	
-end

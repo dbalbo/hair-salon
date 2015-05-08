@@ -13,8 +13,8 @@ class Stylist
 		returned_stylists = DB.exec("SELECT * FROM stylists;")
 		stylists = []
 		returned_stylists.each() do |stylist|
-			name = stylist.fetch('name')
-			id = stylist.fetch('id').to_i()
+			name = stylist.fetch("name")
+			id = stylist.fetch("id").to_i()
 			stylists.push(Stylist.new({:name => name, :id => id}))
 		end
 		stylists
@@ -25,11 +25,6 @@ class Stylist
 		@id = result.first().fetch("id").to_i()
 	end
 	
-	# define_singleton_method(:find) do |id|
-	# 	result = DB.exec("SELECT * FROM stylists WHERE id = #{id};")
-	# 	name = result.first().fetch('name')
-	# 	Stylist.new({:name => name, :id => id})
-	# end
 
 	define_method(:==) do |another_stylist|
 		self.name().==(another_stylist.name()).&(self.id().==(another_stylist.id()))
